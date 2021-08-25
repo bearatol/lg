@@ -15,7 +15,7 @@ go get github.com/bearatol/lg
 ## Exampels
 
 ```go
-    testArray := [...]int{1, 2, 3, 4, 5}
+        testArray := [...]int{1, 2, 3, 4, 5}
 
 	//Info
 	lg.Info("test text", testArray)
