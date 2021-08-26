@@ -7,18 +7,11 @@ import "runtime"
 type color struct {
 	Reset,
 	Red,
-	RedBold,
-	RedBoldUnderline,
-	Green,
 	Yellow,
-	Blue,
-	BlueUnderline,
 	Purple,
 	PurpleUnderline,
 	Cyan,
-	CyanBold,
 	Gray,
-	GrayBold,
 	GrayUnderline string
 }
 
