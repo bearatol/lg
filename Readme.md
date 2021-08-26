@@ -40,9 +40,9 @@ lg.Warnln("test text", testArray)
 lg.Warnf("some values: %s, %v", "test text", testArray)
 
 //Error
-lg.Err("test text", testArray)
-lg.Errln("test text", testArray)
-lg.Errf("some values: %s, %v", "test text", testArray)
+lg.Error("test text", testArray)
+lg.Errorln("test text", testArray)
+lg.Errorf("some values: %s, %v", "test text", testArray)
 
 //Fatal
 lg.Fatal("test text", testArray)

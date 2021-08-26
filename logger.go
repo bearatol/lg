@@ -62,13 +62,13 @@ func Warnf(format string, v ...interface{}) {
 }
 
 //error functions
-func Err(v ...interface{}) {
+func Error(v ...interface{}) {
 	errorLogger.print(v...)
 }
-func Errln(v ...interface{}) {
+func Errorln(v ...interface{}) {
 	errorLogger.println(v...)
 }
-func Errf(format string, v ...interface{}) {
+func Errorf(format string, v ...interface{}) {
 	errorLogger.printf(format, v...)
 }
 
