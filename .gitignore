@@ -2,4 +2,4 @@
 .vscode
 
 cmd/
-vendor/
+bin/

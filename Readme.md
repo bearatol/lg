@@ -2,6 +2,8 @@
 
 ### A simple extension of the standard library go "log" for minimises when and ease of use.
 
+![lg](https://user-images.githubusercontent.com/54537638/130920979-8300b657-b953-4671-a567-584fac97f747.png)
+
 <br>
 The logger uses the standard go "log" package. Allows you to install and use expanded information (prefix, date and time, file and line) without cluttering up with unnecessary code. It also colors text on Linux and OS X for better reading of logs.
 <br>
