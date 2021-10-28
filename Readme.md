@@ -4,14 +4,25 @@
 
 ![lg](https://user-images.githubusercontent.com/54537638/130920979-8300b657-b953-4671-a567-584fac97f747.png)
 
-<br>
+<p>
 The logger uses the standard go "log" package. Allows you to install and use expanded information (prefix, date and time, file and line) without cluttering up with unnecessary code. It also colors text on Linux and OS X for better reading of logs.
-<br>
+</p>
+
+<p>
+You can turn off the highlighting of logs. <br>
+For example: <br>
+
+```go
+func init() {
+    lg.Lg.OffColor()
+}
+```
+</p>
 
 ## Install
 
 ```bash
-go get github.com/bearatol/lg
+go get -u github.com/bearatol/lg
 ```
 
 ## Exampels
