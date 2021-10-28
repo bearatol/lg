@@ -8,14 +8,20 @@
 The logger uses the standard go "log" package. Allows you to install and use expanded information (prefix, date and time, file and line) without cluttering up with unnecessary code. It also colors text on Linux and OS X for better reading of logs.
 </p>
 
+### You can turn off the highlighting of logs. <br>
 <p>
-You can turn off the highlighting of logs. <br>
 For example: <br>
 
 ```go
+package main
+
+import "github.com/bearatol/lg"
+
 func init() {
     lg.Lg.OffColor()
 }
+
+//...
 ```
 </p>
 
