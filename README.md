@@ -8,42 +8,6 @@
 
 The logger uses the standard go "log" package. Allows you to install and use expanded information (prefix, date and time, file and line) without cluttering up with unnecessary code. It also colors text on Linux and OS X for better reading of logs.  
 
-### You can turn off the color of logs
-
-For example:  
-
-```go
-package main
-
-import "github.com/bearatol/lg"
-
-func main() {
-    lg.GetLogger().OffColor()
-
-    lg.Info("Hello, world!")
-}
-
-//...
-```
-
-or
-
-```go
-package main
-
-import "github.com/bearatol/lg"
-
-func init() {
-    lg.GetLogger().OffColor()
-}
-
-func main() {
-    lg.Info("Hello, world!")
-}
-
-//...
-```
-
 ## Install
 
 ```bash
@@ -97,6 +61,42 @@ func main() {
 	lg.Panicln("test text", testArray)
 	lg.Panicf("some values: %s, %v", "test text", testArray)
 }
+```
+
+### You can turn off the color of logs
+
+For example:  
+
+```go
+package main
+
+import "github.com/bearatol/lg"
+
+func main() {
+    lg.GetLogger().OffColor()
+
+    lg.Info("Hello, world!")
+}
+
+//...
+```
+
+or
+
+```go
+package main
+
+import "github.com/bearatol/lg"
+
+func init() {
+    lg.GetLogger().OffColor()
+}
+
+func main() {
+    lg.Info("Hello, world!")
+}
+
+//...
 ```
 
 [doc-img]: https://pkg.go.dev/badge/github.com/bearatol/lg
