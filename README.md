@@ -99,8 +99,8 @@ func main() {
 }
 ```
 
-[doc-img]: https://pkg.go.dev/badge/github.com/bearatol/lg?status.svg
-[doc]: https://pkg.go.dev/badge/github.com/bearatol/lg
+[doc-img]: https://pkg.go.dev/badge/github.com/bearatol/lg
+[doc]: https://pkg.go.dev/github.com/bearatol/lg
 [ci-img]: https://github.com/bearatol/lg/actions/workflows/lg.yml/badge.svg
 [ci]: https://github.com/bearatol/lg/actions/workflows/lg.yml
 [report-img]: https://goreportcard.com/badge/github.com/bearatol/lg
