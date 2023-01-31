@@ -2,7 +2,7 @@ name: Go
 
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "master", "lg-update" ]
   pull_request:
     branches: [ "master" ]
 

@@ -1,11 +1,10 @@
-# The simple logger for golang
+# The simple logger for golang  
+
+[![GoDoc][doc-img]][doc] [![Build Status][ci-img]][ci] [![Go Report Card][report-img]][report]
 
 ### The simple extension of the standard "log" library to minimize effort, code and ease of use
 
-[![GoDoc](https://pkg.go.dev/badge/github.com/bearatol/lg?status.svg)](https://pkg.go.dev/github.com/bearatol/lg)
-[![Go Report Card](https://goreportcard.com/badge/github.com/bearatol/lg)](https://goreportcard.com/report/github.com/bearatol/lg)
-
-![lg](https://user-images.githubusercontent.com/54537638/215755109-8b1b1a3a-4b54-4796-a868-c9b6613f72c9.png)
+![lg][example-img]
 
 The logger uses the standard go "log" package. Allows you to install and use expanded information (prefix, date and time, file and line) without cluttering up with unnecessary code. It also colors text on Linux and OS X for better reading of logs.  
 
@@ -99,3 +98,11 @@ func main() {
 	lg.Panicf("some values: %s, %v", "test text", testArray)
 }
 ```
+
+[doc-img]: https://pkg.go.dev/badge/github.com/bearatol/lg?status.svg
+[doc]: https://pkg.go.dev/badge/github.com/bearatol/lg
+[ci-img]: https://github.com/bearatol/lg/actions/workflows/lg.yml/badge.svg
+[ci]: https://github.com/bearatol/lg/actions/workflows/lg.yml
+[report-img]: https://goreportcard.com/badge/github.com/bearatol/lg
+[report]: https://goreportcard.com/report/github.com/bearatol/lg
+[example-img]: https://user-images.githubusercontent.com/54537638/215755109-8b1b1a3a-4b54-4796-a868-c9b6613f72c9.png
