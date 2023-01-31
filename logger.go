@@ -6,9 +6,15 @@ import (
 	"runtime"
 )
 
-var c = newColor()
-var p = newPrefix()
-var Lg = newLog()
+var logger *logEnd
+
+func init() {
+	logger = newLogEnd()
+}
+
+func GetLogger() *logEnd {
+	return logger
+}
 
 type prefix struct {
 	Info  string
@@ -59,7 +65,7 @@ func newColor() *color {
 	return &color{}
 }
 
-type Log struct {
+type logEnd struct {
 	infoLogger  *lg
 	debugLogger *lg
 	traceLogger *lg
@@ -69,8 +75,10 @@ type Log struct {
 	panicLogger *lg
 }
 
-func newLog() *Log {
-	return &Log{
+func newLogEnd() *logEnd {
+	p := newPrefix()
+	c := newColor()
+	return &logEnd{
 		infoLogger:  loggerCreateNew(os.Stdout, c.Cyan, p.Info),
 		debugLogger: loggerCreateNew(os.Stdout, c.GrayUnderline, p.Debug),
 		traceLogger: loggerCreateNew(os.Stdout, c.Gray, p.Trace),
@@ -81,7 +89,8 @@ func newLog() *Log {
 	}
 }
 
-func (l *Log) OffColor() {
+func (l *logEnd) OffColor() {
+	p := newPrefix()
 	l.infoLogger = loggerCreateNew(os.Stdout, "", p.Info)
 	l.debugLogger = loggerCreateNew(os.Stdout, "", p.Debug)
 	l.traceLogger = loggerCreateNew(os.Stdout, "", p.Trace)
@@ -91,79 +100,79 @@ func (l *Log) OffColor() {
 	l.panicLogger = loggerCreateNew(os.Stderr, "", p.Panic)
 }
 
-//info functions
-func Info(v ...interface{}) {
-	Lg.infoLogger.print(v...)
+// info functions
+func Info(v ...interface{}) error {
+	return logger.infoLogger.print(v...)
 }
-func Infoln(v ...interface{}) {
-	Lg.infoLogger.println(v...)
+func Infoln(v ...interface{}) error {
+	return logger.infoLogger.println(v...)
 }
-func Infof(format string, v ...interface{}) {
-	Lg.infoLogger.printf(format, v...)
-}
-
-//debug functions
-func Debug(v ...interface{}) {
-	Lg.debugLogger.print(v...)
-}
-func Debugln(v ...interface{}) {
-	Lg.debugLogger.println(v...)
-}
-func Debugf(format string, v ...interface{}) {
-	Lg.debugLogger.printf(format, v...)
+func Infof(format string, v ...interface{}) error {
+	return logger.infoLogger.printf(format, v...)
 }
 
-//trace functions
-func Trace(v ...interface{}) {
-	Lg.traceLogger.print(v...)
+// debug functions
+func Debug(v ...interface{}) error {
+	return logger.debugLogger.print(v...)
 }
-func Traceln(v ...interface{}) {
-	Lg.traceLogger.println(v...)
+func Debugln(v ...interface{}) error {
+	return logger.debugLogger.println(v...)
 }
-func Tracef(format string, v ...interface{}) {
-	Lg.traceLogger.printf(format, v...)
-}
-
-//warning functions
-func Warn(v ...interface{}) {
-	Lg.warnLogger.print(v...)
-}
-func Warnln(v ...interface{}) {
-	Lg.warnLogger.println(v...)
-}
-func Warnf(format string, v ...interface{}) {
-	Lg.warnLogger.printf(format, v...)
+func Debugf(format string, v ...interface{}) error {
+	return logger.debugLogger.printf(format, v...)
 }
 
-//error functions
-func Error(v ...interface{}) {
-	Lg.errorLogger.print(v...)
+// trace functions
+func Trace(v ...interface{}) error {
+	return logger.traceLogger.print(v...)
 }
-func Errorln(v ...interface{}) {
-	Lg.errorLogger.println(v...)
+func Traceln(v ...interface{}) error {
+	return logger.traceLogger.println(v...)
 }
-func Errorf(format string, v ...interface{}) {
-	Lg.errorLogger.printf(format, v...)
-}
-
-//fatal functions
-func Fatal(v ...interface{}) {
-	Lg.fatalLogger.fatal(v...)
-}
-func Fatalln(v ...interface{}) {
-	Lg.fatalLogger.fatalln(v...)
-}
-func Fatalf(format string, v ...interface{}) {
-	Lg.fatalLogger.fatalf(format, v...)
+func Tracef(format string, v ...interface{}) error {
+	return logger.traceLogger.printf(format, v...)
 }
 
-//panic functions
-func Panic(v ...interface{}) {
-	Lg.panicLogger.panic(v...)
+// warning functions
+func Warn(v ...interface{}) error {
+	return logger.warnLogger.print(v...)
 }
-func Panicln(v ...interface{}) {
-	Lg.panicLogger.panicln(v...)
+func Warnln(v ...interface{}) error {
+	return logger.warnLogger.println(v...)
 }
-func Panicf(format string, v ...interface{}) {
-	Lg.panicLogger.panicf(format, v...)
+func Warnf(format string, v ...interface{}) error {
+	return logger.warnLogger.printf(format, v...)
+}
+
+// error functions
+func Error(v ...interface{}) error {
+	return logger.errorLogger.print(v...)
+}
+func Errorln(v ...interface{}) error {
+	return logger.errorLogger.println(v...)
+}
+func Errorf(format string, v ...interface{}) error {
+	return logger.errorLogger.printf(format, v...)
+}
+
+// fatal functions
+func Fatal(v ...interface{}) error {
+	return logger.fatalLogger.fatal(v...)
+}
+func Fatalln(v ...interface{}) error {
+	return logger.fatalLogger.fatalln(v...)
+}
+func Fatalf(format string, v ...interface{}) error {
+	return logger.fatalLogger.fatalf(format, v...)
+}
+
+// panic functions
+func Panic(v ...interface{}) error {
+	return logger.panicLogger.panic(v...)
+}
+func Panicln(v ...interface{}) error {
+	return logger.panicLogger.panicln(v...)
+}
+func Panicf(format string, v ...interface{}) error {
+	return logger.panicLogger.panicf(format, v...)
 }
