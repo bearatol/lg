@@ -7,31 +7,73 @@ func TestLogger_TurnColor(t *testing.T) {
 		lg := newLogEnd()
 		lg.OffColor()
 
-		if lg.infoLogger.c.Reset != "" ||
-			lg.infoLogger.c.Red != "" ||
-			lg.infoLogger.c.Yellow != "" ||
-			lg.infoLogger.c.Purple != "" ||
-			lg.infoLogger.c.PurpleUnderline != "" ||
-			lg.infoLogger.c.Cyan != "" ||
-			lg.infoLogger.c.Gray != "" ||
-			lg.infoLogger.c.GrayUnderline != "" {
-			t.Logf("%+v", lg.infoLogger.c)
-			t.Error("color isn't empty")
+		emptyReset := lg.infoLogger.c.Reset == ""
+		if !emptyReset {
+			t.Errorf("color Reset isn't empty: %s", lg.infoLogger.c.Reset)
+		}
+		emptyRed := lg.infoLogger.c.Red == ""
+		if !emptyRed {
+			t.Errorf("color Red isn't empty: %s", lg.infoLogger.c.Red)
+		}
+		emptyYellow := lg.infoLogger.c.Yellow == ""
+		if !emptyYellow {
+			t.Errorf("color Yellow isn't empty: %s", lg.infoLogger.c.Yellow)
+		}
+		emptyPurple := lg.infoLogger.c.Purple == ""
+		if !emptyPurple {
+			t.Errorf("color Purple isn't empty: %s", lg.infoLogger.c.Purple)
+		}
+		emptyPurpleUnderline := lg.infoLogger.c.PurpleUnderline == ""
+		if !emptyPurpleUnderline {
+			t.Errorf("color PurpleUnderline isn't empty: %s", lg.infoLogger.c.PurpleUnderline)
+		}
+		emptyCyan := lg.infoLogger.c.Cyan == ""
+		if !emptyCyan {
+			t.Errorf("color Cyan isn't empty: %s", lg.infoLogger.c.Cyan)
+		}
+		emptyGray := lg.infoLogger.c.Gray == ""
+		if !emptyGray {
+			t.Errorf("color Gray isn't empty: %s", lg.infoLogger.c.Gray)
+		}
+		emptyGrayUnderline := lg.infoLogger.c.GrayUnderline == ""
+		if !emptyGrayUnderline {
+			t.Errorf("color GrayUnderline isn't empty: %s", lg.infoLogger.c.GrayUnderline)
 		}
 	})
 	t.Run("color on", func(t *testing.T) {
 		lg := newLogEnd()
 
-		if lg.infoLogger.c.Reset != "\033[0;0;0m" ||
-			lg.infoLogger.c.Red != "\033[0;0;31m" ||
-			lg.infoLogger.c.Yellow != "\033[0;0;33m" ||
-			lg.infoLogger.c.Purple != "\033[0;0;35m" ||
-			lg.infoLogger.c.PurpleUnderline != "\033[0;4;35m" ||
-			lg.infoLogger.c.Cyan != "\033[0;0;36m" ||
-			lg.infoLogger.c.Gray != "\033[0;0;37m" ||
-			lg.infoLogger.c.GrayUnderline != "\033[0;4;37m" {
-			t.Logf("%+v", lg.infoLogger.c)
-			t.Error("color isn't valid")
+		colorReset := lg.infoLogger.c.Reset == "\033[0;0;0m"
+		if !colorReset {
+			t.Errorf("color Reset isn't valid: %s", lg.infoLogger.c.Reset)
+		}
+		colorRed := lg.infoLogger.c.Red == "\033[0;0;31m"
+		if !colorRed {
+			t.Errorf("color ReRedset isn't valid: %s", lg.infoLogger.c.Red)
+		}
+		colorYellow := lg.infoLogger.c.Yellow == "\033[0;0;33m"
+		if !colorYellow {
+			t.Errorf("color Yellow isn't valid: %s", lg.infoLogger.c.Yellow)
+		}
+		colorPurple := lg.infoLogger.c.Purple == "\033[0;0;35m"
+		if !colorPurple {
+			t.Errorf("color Purple isn't valid: %s", lg.infoLogger.c.Purple)
+		}
+		colorPurpleUnderline := lg.infoLogger.c.PurpleUnderline == "\033[0;4;35m"
+		if !colorPurpleUnderline {
+			t.Errorf("color PurpleUnderline isn't valid: %s", lg.infoLogger.c.PurpleUnderline)
+		}
+		colorCyan := lg.infoLogger.c.Cyan == "\033[0;0;36m"
+		if !colorCyan {
+			t.Errorf("color Cyan isn't valid: %s", lg.infoLogger.c.Cyan)
+		}
+		colorGray := lg.infoLogger.c.Gray == "\033[0;0;37m"
+		if !colorGray {
+			t.Errorf("color Gray isn't valid: %s", lg.infoLogger.c.Gray)
+		}
+		colorGrayUnderline := lg.infoLogger.c.GrayUnderline == "\033[0;4;37m"
+		if !colorGrayUnderline {
+			t.Errorf("color GrayUnderline isn't valid: %s", lg.infoLogger.c.GrayUnderline)
 		}
 	})
 }
