@@ -1,8 +1,8 @@
-# The simple logger for golang  
+# A simple logger for golang  
 
 [![GoDoc][doc-img]][doc] [![Build Status][ci-img]][ci] [![Go Report Card][report-img]][report]
 
-### The simple extension of the standard "log" library to minimize effort, code and ease of use
+### A simple extension of the standard "log" library to minimize effort, code and ease of use
 
 ![lg][example-img]
 
