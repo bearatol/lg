@@ -14,7 +14,7 @@ The logger uses the standard go "log" package. Allows you to install and use exp
 go get -u github.com/bearatol/lg
 ```
 
-## Exampels
+## Examples
 
 ```go
 package main
