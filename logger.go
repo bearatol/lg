@@ -2,6 +2,7 @@
 package lg
 
 import (
+	"log"
 	"os"
 	"runtime"
 )
@@ -90,14 +91,51 @@ func newLogEnd() *logEnd {
 }
 
 func (l *logEnd) OffColor() {
-	p := newPrefix()
-	l.infoLogger = loggerCreateNew(os.Stdout, "", p.Info)
-	l.debugLogger = loggerCreateNew(os.Stdout, "", p.Debug)
-	l.traceLogger = loggerCreateNew(os.Stdout, "", p.Trace)
-	l.warnLogger = loggerCreateNew(os.Stdout, "", p.Warn)
-	l.errorLogger = loggerCreateNew(os.Stderr, "", p.Error)
-	l.fatalLogger = loggerCreateNew(os.Stderr, "", p.Fatal)
-	l.panicLogger = loggerCreateNew(os.Stderr, "", p.Panic)
+	offColor = true
+	l.rewrite()
+}
+
+func (l *logEnd) OffPrefix() {
+	offPrefix = true
+	l.rewrite()
+}
+
+func (l *logEnd) OffDate() {
+	logFlags = logFlags &^ log.Ldate
+	l.infoLogger.log.SetFlags(logFlags)
+	l.debugLogger.log.SetFlags(logFlags)
+	l.traceLogger.log.SetFlags(logFlags)
+	l.warnLogger.log.SetFlags(logFlags)
+	l.errorLogger.log.SetFlags(logFlags)
+	l.fatalLogger.log.SetFlags(logFlags)
+	l.panicLogger.log.SetFlags(logFlags)
+}
+
+func (l *logEnd) OffTime() {
+	logFlags = logFlags &^ log.Ltime
+	l.infoLogger.log.SetFlags(logFlags)
+	l.debugLogger.log.SetFlags(logFlags)
+	l.traceLogger.log.SetFlags(logFlags)
+	l.warnLogger.log.SetFlags(logFlags)
+	l.errorLogger.log.SetFlags(logFlags)
+	l.fatalLogger.log.SetFlags(logFlags)
+	l.panicLogger.log.SetFlags(logFlags)
+}
+
+func (l *logEnd) OffShortFile() {
+	logFlags = logFlags &^ log.Lshortfile
+	l.infoLogger.log.SetFlags(logFlags)
+	l.debugLogger.log.SetFlags(logFlags)
+	l.traceLogger.log.SetFlags(logFlags)
+	l.warnLogger.log.SetFlags(logFlags)
+	l.errorLogger.log.SetFlags(logFlags)
+	l.fatalLogger.log.SetFlags(logFlags)
+	l.panicLogger.log.SetFlags(logFlags)
+}
+
+func (l *logEnd) rewrite() {
+	log := newLogEnd()
+	*l = *log
 }
 
 // info functions

@@ -7,20 +7,35 @@ import (
 	"os"
 )
 
+var (
+	logFlags            = log.Ldate | log.Ltime | log.Lshortfile
+	offColor, offPrefix bool
+)
+
+func resetVariables() {
+	logFlags = log.Ldate | log.Ltime | log.Lshortfile
+	offColor, offPrefix = false, false
+}
+
 type lg struct {
 	c   *color
 	log *log.Logger
 }
 
 func loggerCreateNew(std *os.File, colorVal string, prefix string) *lg {
-	log := &lg{
-		c:   newColor(),
-		log: log.New(std, colorVal+prefix+"\t", log.Ldate|log.Ltime|log.Lshortfile),
+	l := &lg{c: newColor()}
+	if offColor {
+		colorVal = ""
+		l.c = &color{}
 	}
-	if colorVal == "" {
-		log.c = &color{}
+
+	prefix += "\t"
+	if offPrefix {
+		prefix = ""
 	}
-	return log
+
+	l.log = log.New(std, colorVal+prefix, logFlags)
+	return l
 }
 
 func (l *lg) print(v ...interface{}) error {
