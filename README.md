@@ -63,7 +63,7 @@ func main() {
 }
 ```
 
-### You can turn off the color of logs
+### You can turn off all properties of logs
 
 For example:  
 
@@ -74,6 +74,10 @@ import "github.com/bearatol/lg"
 
 func main() {
     lg.GetLogger().OffColor()
+	lg.GetLogger().OffPrefix()
+	lg.GetLogger().OffDate()
+	lg.GetLogger().OffTime()
+	lg.GetLogger().OffShortFile()
 
     lg.Info("Hello, world!")
 }
@@ -90,6 +94,10 @@ import "github.com/bearatol/lg"
 
 func init() {
     lg.GetLogger().OffColor()
+	lg.GetLogger().OffPrefix()
+	lg.GetLogger().OffDate()
+	lg.GetLogger().OffTime()
+	lg.GetLogger().OffShortFile()
 }
 
 func main() {
