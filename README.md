@@ -74,10 +74,10 @@ import "github.com/bearatol/lg"
 
 func main() {
     lg.GetLogger().OffColor()
-	lg.GetLogger().OffPrefix()
-	lg.GetLogger().OffDate()
-	lg.GetLogger().OffTime()
-	lg.GetLogger().OffShortFile()
+    lg.GetLogger().OffPrefix()
+    lg.GetLogger().OffDate()
+    lg.GetLogger().OffTime()
+    lg.GetLogger().OffShortFile()
 
     lg.Info("Hello, world!")
 }
@@ -94,10 +94,10 @@ import "github.com/bearatol/lg"
 
 func init() {
     lg.GetLogger().OffColor()
-	lg.GetLogger().OffPrefix()
-	lg.GetLogger().OffDate()
-	lg.GetLogger().OffTime()
-	lg.GetLogger().OffShortFile()
+    lg.GetLogger().OffPrefix()
+    lg.GetLogger().OffDate()
+    lg.GetLogger().OffTime()
+    lg.GetLogger().OffShortFile()
 }
 
 func main() {
